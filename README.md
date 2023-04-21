@@ -14,8 +14,8 @@ sudo chmod 777 stack
 cd stack
 git clone https://opendev.org/openstack/devstack --branch stable/yoga
 cd devstack/
+vi local.conf   # details in local.conf ,change your Host_IP
 ```
-vi local.conf; # details in local.conf ,change your Host_IP
 ```
 sudo apt install net-tools
 cd /tmp
