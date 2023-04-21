@@ -17,8 +17,6 @@ cd devstack/
 ```
 vi local.conf; # details in local.conf ,change your Host_IP
 ```
-
-
 sudo apt install net-tools
 cd /tmp
 wget https://packages.cloud.google.com/apt/doc/apt-key.gpg
@@ -26,9 +24,11 @@ ls
 sudo apt-key add apt-key.gpg
 cd -
 ```
+Following is to start the stack – repeat only after clean+ unstack+ reboot
+```
 ./stack.sh
 ./clean.sh
 ./unstack.sh
 sudo reboot now
-Following is to start the stack – repeat only after clean+ unstack+ reboot
+
 ```
