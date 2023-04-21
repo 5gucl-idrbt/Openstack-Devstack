@@ -37,7 +37,10 @@ Access the openstack dashboard from web http://<your_IP_Address>/dashboard
 ## Instance creation
 
 First you need to download an image and it should be .img file
-In order to customise the image: 
+
+
+
+If it is ubuntu image we need to customise the image: 
 ```
 rm -f vm_0001-focal-server-cloudimg-amd64.qcow2
 qemu-img create -f qcow2 -F qcow2 -b focal-server-cloudimg-amd64.img  vm_0001-focal-server-cloudimg-amd64.qcow2 20G
