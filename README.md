@@ -34,7 +34,7 @@ sudo reboot now
 ```
 Access the openstack dashboard from web http://<your_IP_Address>/dashboard
 
-## Instance creation
+# Instance creation
 
 First you need to download an image and it should be .img file
 
@@ -74,11 +74,13 @@ example:
 qemu-img convert -f qcow2 -O raw imgname.qcow2 imgname.img
 ```
 select the newly converted file in the openstack image as QEMU format
+
+## Create Image
 ```
 compute > Images > create Image 
 ```
+## Create a Router
 
-make sure to create a router which connects to public network as well as the network in which the instance is in.
 ```
 Network > Routers > create Router
 ```
@@ -86,9 +88,9 @@ Give Router Name
 select  external network 
 create
 
-----------------------------
-create a network
-----------------------------
+
+## Create a Network
+
 ```
 Network > networks > Create network /Edit Network 
 ```
@@ -96,11 +98,11 @@ if no need of network creation just edit network which you need.
 
 For Floating IP Creation,
 Select a network and click on it then Create a subnet
-	Give subnet name,Network address, Gateway IP
-	Click on subnet details Give allocation Pools and DNS Nameserver 
-	Save
+Give subnet name,Network address, Gateway IP
+Click on subnet details Give allocation Pools and DNS Nameserver 
+Save
 
-now create an instace
+Now create an instance
 
 ```
 compute > Instances > launch Instance
@@ -108,15 +110,15 @@ compute > Instances > launch Instance
 Assign Floating IP
 
 Click on down bar in Action section of an Instance 
-Select Associate Floatip IP
+Select Associate Floating IP
 
 Access SSH From Bare metal
 ```
-	sudo ip route add <floating Ip/32> via <router_IP>
+sudo ip route add <floating Ip/32> via <router_IP>
 ```
 Access SSH from Another PC
 ```
-  sudo ip route add <floating_Ip/32> via <openstack_baremtal_IP>
+ sudo ip route add <floating_Ip/32> via <openstack_baremtal_IP>
 ```
 
 If you able to communicate 8.8.8.8 but not google.com then,
