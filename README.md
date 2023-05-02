@@ -77,26 +77,55 @@ select the newly converted file in the openstack image as QEMU format
 ```
 compute > Images > create Image 
 ```
+
+make sure to create a router which connects to public network as well as the network in which the instance is in.
+```
+Network > Routers > create Router
+```
+Give Router Name
+select  external network 
+create
+
+----------------------------
+create a network
+----------------------------
+```
+Network > networks > Create network /Edit Network 
+```
+if no need of network creation just edit network which you need.
+
+For Floating IP Creation,
+Select a network and click on it then Create a subnet
+	Give subnet name,Network address, Gateway IP
+	Click on subnet details Give allocation Pools and DNS Nameserver 
+	Save
+
 now create an instace
 
 ```
 compute > Instances > launch Instance
 ```
-make sure to create a router which connects to public network as well as the network in which the instance is in.
+Assign Floating IP
+
+Click on down bar in Action section of an Instance 
+Select Associate Floatip IP
+
+Access SSH From Bare metal
 ```
-Network > Routers > create Router
+	sudo ip route add <floating Ip/32> via <router_IP>
+```
+Access SSH from Another PC
+```
+  sudo ip route add <floating_Ip/32> via <openstack_baremtal_IP>
 ```
 
-Now open the instance and go the netplan and adjust the netplan setting in the instance.
+If you able to communicate 8.8.8.8 but not google.com then,
+go to /etc/resolv.conf
+and add the line
 ```
-cd etc/netplan
-sudo nano 50-cloud-init.yaml
+nameserver 8.8.8.8
 ```
-```
-sudo netplan apply
-```
-now go to /etc/resolv.conf
-and add the line nameserver 8.8.8.8 at the end and save the file
+at the end and save the file
 
 
 Note: Inorder to access the openstack dahboard from any pc we have to disable the ufw firewall or add exceptions for port 80 and 443.
