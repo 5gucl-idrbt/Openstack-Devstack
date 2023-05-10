@@ -97,10 +97,14 @@ Network > networks > Create network /Edit Network
 if no need of network creation just edit network which you need.
 
 For Floating IP Creation,
-Select a network and click on it then Create a subnet
-Give subnet name,Network address, Gateway IP
-Click on subnet details Give allocation Pools and DNS Nameserver 
-Save
+
+>Select a network and click on it then Create a subnet
+>
+>Give subnet name,Network address, Gateway IP
+>
+>Click on subnet details Give allocation Pools and DNS Nameserver 
+>
+>Save
 
 Now create an instance
 
@@ -110,16 +114,16 @@ compute > Instances > launch Instance
 Assign Floating IP
 
 Click on down bar in Action section of an Instance 
-Select Associate Floating IP
+>Select Associate Floating IP
 
-Access SSH From Bare metal
-```
-sudo ip route add <floating Ip/32> via <router_IP>
-```
-Access SSH from Another PC
-```
- sudo ip route add <floating_Ip/32> via <openstack_baremtal_IP>
-```
+add a route in Physical Router
+>destination ip : <Instance_FloatingIP>
+>
+>Gateway: <BareMetal_IP> 
+>
+here baremetal is openstack installed PC
+
+Now, You can able to access Instance via SSH  
 
 If you able to communicate 8.8.8.8 but not google.com then,
 go to /etc/resolv.conf
