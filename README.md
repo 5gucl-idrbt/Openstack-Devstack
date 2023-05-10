@@ -38,7 +38,8 @@ Access the openstack dashboard from web http://<your_IP_Address>/dashboard
 
 First you need to download an image and it should be .img file
 
-
+For Ubuntu Cloud Image download
+https://cloud-images.ubuntu.com/focal/current/
 
 If it is ubuntu image we need to customise the image: 
 ```
@@ -46,8 +47,8 @@ rm -f vm_0001-focal-server-cloudimg-amd64.qcow2
 qemu-img create -f qcow2 -F qcow2 -b focal-server-cloudimg-amd64.img  vm_0001-focal-server-cloudimg-amd64.qcow2 20G
 qemu-img info vm_0001-focal-server-cloudimg-amd64.qcow2
 VM_NAME="ubuntu-20-cloud-image"
-USERNAME="programster"
-PASSWORD="thisok"
+USERNAME="idrbt"
+PASSWORD="idrbt"
 echo "#cloud-config
 system_info:
   default_user:
@@ -66,6 +67,10 @@ cloud-localds ./cidata.iso user-data
 qemu-system-x86_64 -m 2048 -smp 4 -hda ./vm_0001-focal-server-cloudimg-amd64.qcow2 \
       -cdrom ./cidata.iso -device e1000,netdev=net0 -netdev user,id=net0,hostfwd=tcp::5555-:22 -nographic
 ```
+If you are facing any issue for customization then run this command
+
+>sudo update-grub
+
 your image will be in .qcow2 format with new name
 
 we have to convert it to the .img file 
@@ -135,6 +140,9 @@ at the end and save the file
 
 
 Note: Inorder to access the openstack dahboard from any pc we have to disable the ufw firewall or add exceptions for port 80 and 443.
+
+
+
 
 
 
